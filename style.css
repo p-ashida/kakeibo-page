@@ -1,0 +1,225 @@
+/* ==========================================================
+   家計簿アプリ スタイルシート
+   白 × 淡いブルーを基調とした、業務用の落ち着いたデザイン
+   ========================================================== */
+
+:root {
+  --color-bg: #f4f8fb;
+  --color-surface: #ffffff;
+  --color-primary: #3b6ea5;
+  --color-primary-dark: #2c5480;
+  --color-accent: #e4eef7;
+  --color-border: #d6e2ee;
+  --color-text: #2c3e50;
+  --color-text-sub: #6b7c8f;
+  --color-expense: #c0546a;
+  --color-income: #2f8f6b;
+  --radius: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", sans-serif;
+  line-height: 1.6;
+}
+
+/* ヘッダー */
+.app-header {
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+  padding: 24px 40px;
+}
+
+.app-header h1 {
+  margin: 0;
+  font-size: 24px;
+  color: var(--color-primary-dark);
+}
+
+/* 全体レイアウト：左に入力欄、右に表示欄 */
+.app-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px;
+}
+
+.input-panel {
+  flex: 0 0 360px;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+
+.display-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  min-width: 0;
+}
+
+/* セクション見出し */
+h2 {
+  margin: 0 0 24px;
+  font-size: 18px;
+  color: var(--color-primary-dark);
+  border-left: 4px solid var(--color-primary);
+  padding-left: 10px;
+}
+
+/* フォーム */
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  margin-bottom: 22px;
+}
+
+.form-row label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  color: var(--color-text-sub);
+}
+
+.form-row input[type="date"],
+.form-row input[type="text"],
+.form-row input[type="number"] {
+  width: 100%;
+  padding: 12px 14px;
+  font-size: 15px;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+}
+
+.form-row input[type="date"]:focus,
+.form-row input[type="text"]:focus,
+.form-row input[type="number"]:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 110, 165, 0.15);
+}
+
+.radio-group {
+  display: flex;
+  gap: 24px;
+  padding: 6px 0;
+}
+
+.radio-option {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.radio-option label {
+  margin: 0;
+  font-size: 15px;
+  color: var(--color-text);
+}
+
+.radio-option input[type="radio"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--color-primary);
+}
+
+.form-actions {
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+button#addButton {
+  width: 100%;
+  padding: 14px 0;
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+  background-color: var(--color-primary);
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+button#addButton:hover {
+  background-color: var(--color-primary-dark);
+}
+
+/* 表示側カード（合計金額・一覧） */
+.total-card,
+.record-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 32px;
+}
+
+#totalAmount {
+  margin: 0;
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--color-primary-dark);
+}
+
+/* 一覧テーブル */
+table#recordTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+table#recordTable th,
+table#recordTable td {
+  padding: 14px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+  font-size: 14px;
+}
+
+table#recordTable thead th {
+  background-color: var(--color-accent);
+  color: var(--color-primary-dark);
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+table#recordTable tbody tr:hover {
+  background-color: var(--color-bg);
+}
+
+.amount-expense {
+  color: var(--color-expense);
+  font-weight: bold;
+}
+
+.amount-income {
+  color: var(--color-income);
+  font-weight: bold;
+}
+
+/* レスポンシブ：画面が狭い場合は縦積みに */
+@media (max-width: 900px) {
+  .app-layout {
+    flex-direction: column;
+  }
+
+  .input-panel {
+    flex: 1 1 auto;
+    width: 100%;
+  }
+}
