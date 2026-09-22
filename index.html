@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>家計簿アプリ</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>家計簿アプリ</h1>
+  </header>
+
+  <main class="app-layout">
+    <section class="input-panel">
+      <h2>データ登録</h2>
+      <form id="kakeiboForm">
+        <div class="form-row">
+          <label for="date">日付</label>
+          <input type="date" id="date" name="date">
+        </div>
+        <div class="form-row">
+          <label for="item">品目</label>
+          <input type="text" id="item" name="item" placeholder="例：食費">
+        </div>
+        <div class="form-row">
+          <label>区分</label>
+          <div class="radio-group">
+            <span class="radio-option">
+              <input type="radio" id="typeExpense" name="type" value="expense" checked>
+              <label for="typeExpense">支出</label>
+            </span>
+            <span class="radio-option">
+              <input type="radio" id="typeIncome" name="type" value="income">
+              <label for="typeIncome">収入</label>
+            </span>
+          </div>
+        </div>
+        <div class="form-row">
+          <label for="amount">金額</label>
+          <input type="number" id="amount" name="amount" placeholder="円">
+        </div>
+        <div class="form-row form-actions">
+          <button type="submit" id="addButton">追加</button>
+        </div>
+      </form>
+    </section>
+
+    <section class="display-panel">
+      <div class="total-card">
+        <h2>合計金額</h2>
+        <p id="totalAmount">0円</p>
+      </div>
+
+      <div class="record-card">
+        <h2>登録データ一覧</h2>
+        <table id="recordTable">
+          <thead>
+            <tr>
+              <th>日付</th>
+              <th>品目</th>
+              <th>区分</th>
+              <th>金額</th>
+            </tr>
+          </thead>
+          <tbody id="recordList">
+            <!-- 登録されたデータがここに追加される -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
